@@ -116,3 +116,39 @@ erDiagram
     Compra --|{ Pagamento : possui
     Animal --|{ Consulta : possui
 ```
+
+
+
+
+
+# Script SQL 
+
+````SQL 
+
+CREATE DATABASE pet_shop;
+USE pet_shop;
+
+-- Criação das tabelas
+CREATE TABLE Produto (
+    codigo_produto INT PRIMARY KEY,
+    descricao VARCHAR(100),
+    preco DECIMAL(10,2),
+    marca VARCHAR(50),
+    categoria VARCHAR(50),
+    quantidade_estoque INT
+);
+
+CREATE TABLE Servico (
+    codigo_servico INT PRIMARY KEY,
+    descricao VARCHAR(100),
+    preco DECIMAL(10,2),
+    duracao INT
+);
+
+-- ... (continuar criando as tabelas de acordo com o diagrama)
+
+-- Criação das chaves estrangeiras
+ALTER TABLE Animal ADD CONSTRAINT fk_animal_cliente FOREIGN KEY (codigo_cliente) REFERENCES Cliente(codigo_cliente);
+-- ... (continuar criando as outras chaves estrangeiras)
+
+```
