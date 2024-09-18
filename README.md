@@ -13,7 +13,7 @@ teste aula
 
 
 
-```
+```mermaid
 
 erDiagram
     Produto {
