@@ -120,6 +120,71 @@ erDiagram
 
 
 
+# 5- Diagrama de classe 
+```
+classDiagram
+  class Produto {
+    - codigo_produto: int
+    - descricao: string
+    - preco: decimal
+    - marca: string
+    - categoria: string
+    - quantidade_estoque: int
+  }
+
+  class Servico {
+    - codigo_servico: int
+    - descricao: string
+    - preco: decimal
+    - duracao: int
+  }
+
+  class Cliente {
+    - codigo_cliente: int
+    - nome: string
+    - endereco: string
+    - telefone: string
+    - email: string
+    - animais: Animal[]
+    - compras: Compra[]
+  }
+
+  class Animal {
+    - codigo_animal: int
+    - nome: string
+    - especie: string
+    - raca: string
+    - data_nascimento: date
+    - dono: Cliente
+    - consultas: Consulta[]
+  }
+
+  class Compra {
+    - numero_compra: int
+    - data_compra: date
+    - valor_total: decimal
+    - cliente: Cliente
+    - itens: ItemCompra[]
+    - pagamento: Pagamento
+  }
+
+  class ItemCompra {
+    - id: int
+    - quantidade: int
+    - desconto: decimal
+    - produto: Produto
+    - compra: Compra
+  }
+
+  -- ... (continuar com as outras classes)
+
+  Cliente "1" -- "*" Animal : tem
+  Cliente "1" -- "*" Compra : realiza
+  Produto "1" -- "*" ItemCompra : compõe
+  Compra "1" -- "*" ItemCompra : contém
+  -- ... (continuar com os outros relacionamentos)
+  ```
+
 
 # Script SQL 
 
