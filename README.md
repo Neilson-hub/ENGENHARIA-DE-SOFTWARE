@@ -24,6 +24,7 @@ erDiagram
         string categoria
         int quantidade_estoque
     }
+
     Servico {
         int codigo_servico PK
         string descricao
@@ -58,21 +59,9 @@ erDiagram
     Item_Compra {
         int id PK
         int quantidade
+        decimal desconto
         int codigo_produto FK
         int numero_compra FK
-    }
-
-    Promocao {
-        int codigo_promocao PK
-        date data_inicio
-        date data_fim
-        decimal desconto
-    }
-
-    Produto_Promocao {
-        int id PK
-        int codigo_produto FK
-        int codigo_promocao FK
     }
 
     Agendamento {
@@ -101,12 +90,29 @@ erDiagram
         int numero_pedido FK
     }
 
+    Pagamento {
+        int id PK
+        date data_pagamento
+        decimal valor
+        string forma_pagamento
+        int numero_compra FK
+    }
+
+    Consulta {
+        int id PK
+        date data_consulta
+        string motivo
+        string tratamento
+        int codigo_animal FK
+    }
+
     Cliente --|{ Compra : realiza
     Animal --|{ Compra : possui
     Produto --|{ Compra : contém via Item_Compra
-    Promocao --|{ Produto : aplica via Produto_Promocao
     Servico --|{ Agendamento : oferece
     Animal --|{ Agendamento : recebe
     Fornecedor --|{ Pedido_Compra : realiza
     Produto --|{ Pedido_Compra : solicita via Item_Pedido
+    Compra --|{ Pagamento : possui
+    Animal --|{ Consulta : possui
 ```
